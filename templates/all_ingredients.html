@@ -1,0 +1,41 @@
+<html>
+{% extends "base2.html" %}
+{% block content %}
+<form method = "GET">
+{{myfilter.form}}
+ <input type = "Submit">
+<div class = "row">
+  <div class="col-md-10">
+    <h5>Inventory</h5>
+    <hr>
+    <div class="card card-body">
+      <h5> All Ingredients</h5>
+      <table class="table table-sm">
+        <tr>
+          <th>Ingredient</th>
+          <th>Stock</th>
+          <th>Low Quantity</th>
+          <th>Action </th>
+        </tr>
+      {% for ingredient in ingredients %}
+      <tr>
+      {% if ingredient.inStock < 50 %}
+        <td> <p style = "color:red">{{ingredient.title}} </p></td>
+        <td> <p style = "color:red"> {{ingredient.inStock}} </p> </td>
+        <td> <p style = "color:red">{{ingredient.low_quantity}} </p> </td>
+        <td><a class="btn btn-primary  btn-sm btn-1" href="{% url 'shop:ingredient-quantity-update' ingredient.id %}"> Update stock</a></td>
+      {% else %}
+        <td> {{ingredient.title}} </td>
+        <td> {{ingredient.inStock}} </td>
+        <td> {{ingredient.low_quantity}} </td>
+        <td> <a class="btn btn-primary  btn-sm btn-1" href="{% url 'shop:ingredient-quantity-update' ingredient.id %}"> Update stock</a></td>
+        {% endif %}
+      </tr>
+      {%endfor%}
+      </table>
+    </div>
+  </div>
+</div>
+
+{%endblock%}
+</html>

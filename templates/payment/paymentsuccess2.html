@@ -1,0 +1,14 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="info">
+<div class="container" style="text-align:center;">
+<h1>Payment Success</h1>
+<br>
+<h3>Congratulations! You have successfully added {{membership.type}} membership which will expire on {{membership.ending_date}} </h3>
+<a class="btn btn-primary btn-lg signup-button" href = "/">Return to Home</a>
+</div>
+</div>
+{% endblock content%}

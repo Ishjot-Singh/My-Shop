@@ -1,0 +1,93 @@
+/* Required height of parents of the Half Page Carousel for proper displaying carousel itself 
+html,
+body,
+
+*/
+.view {
+  height: 100%; }
+
+/* Half Page Carousel itself*/
+.carousel {
+  height: 50%; }
+  .carousel .carousel-inner {
+    height: 100%; }
+    .carousel .carousel-inner .carousel-item,
+    .carousel .carousel-inner .active {
+      height: 100%; }
+
+/* Adjustment for mobile devices*/
+@media (max-width: 776px) {
+  .carousel {
+    height: 100%; } }
+
+/* Footer color for sake of consistency with Navbar */
+.page-footer {
+  background-color: #929FBA; }
+
+.appointment-btn {
+  margin-left: 25px;
+  background: #1977cc;
+  color: #fff;
+  border-radius: 50px;
+  padding: 8px 25px;
+  white-space: nowrap;
+  transition: 0.3s;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.rating
+{
+  transform: translate(-50%,-50%) rotateY(180deg);
+  display: flex;
+}
+
+.rating input
+{
+  display: none;
+}
+
+.rating label
+{
+  display: block;
+  cursor: pointer;
+  width: 50px;
+}
+
+.rating label:before
+{
+  content: '\f005';
+  font-family: fontAwesome;
+  position: relative;
+  display: block;
+  font-size: 20px;
+  color: #101010;
+
+}
+
+.rating label:after
+{
+  content: '\f005';
+  font-family: fontAwesome;
+  position: absolute;
+  display: block;
+  font-size: 20px;
+  color: #1f9cff;
+  top: 0;
+  opacity: 1;
+  transition: 0.5s;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.rating label:hover:after,
+.rating label:hover checked ~ label after,
+.rating input:checked ~ label: after
+{
+  opacity: 1;
+
+}
+
+.ok
+{
+  color: blue;
+}

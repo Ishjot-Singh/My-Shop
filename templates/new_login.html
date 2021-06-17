@@ -1,0 +1,17 @@
+<html>
+{% extends 'base2.html' %}
+{%block content %}    
+	<title>Login me please</title>
+<h3>LOGIN</h3>
+<p>New here? Then please <a href="/register_user"> register</a>
+<form method='POST' action="">
+{%csrf_token%}
+<input type="text" name="username" placeholder="Username...">
+<input type="password" name="password" placeholder="Password...">
+<input type="submit" value="Login">
+</form>
+{% for message in messages%}
+	{{message}}
+{%endfor%}
+{%endblock content %}
+</html>

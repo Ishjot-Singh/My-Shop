@@ -1,0 +1,157 @@
+
+
+{% extends "base2.html" %}
+
+{% block content %}
+  <main>
+    <div class="container">
+
+
+      <!--Section: Products v.3-->
+      <section class="text-center mb-4">
+
+        <div class="row wow fadeIn">
+     
+            
+
+        </div>
+
+      </section>
+      I am {{user}}
+      <!-- {{slug}} -->
+
+<h1>All orders</h1>
+      <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Ordered</th>
+            <th scope="col">Ordered Date</th>
+            <th scope="col">Delivery Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Total Bill</th>
+            <th scope="col">Items</th>
+            <th scope="col">Billing Address</th>
+
+        </tr>
+        </thead>
+        <tbody>
+          {% for order in allorders %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{order.user.username}}</td>
+            <td>{{order.ordered_date}}</td>
+            <td>{{order.delivery_date}}</td>
+            <td>{{order.status}}</td>
+            <td>${{ order.get_total }}</td>
+            <td>            {% for item in order.items.all %}
+                {{item}} ,
+            {% endfor %}</td>
+            <td>{{order.shipping_address.street_address}},{{order.shipping_address.apartment_address}}</td>
+ 
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+
+
+
+      <h2> StoreKeepers :-</h2>
+      {% for person in Storekeepers %}
+      <a class="page-link" href="/manager_view/2" aria-label="Previous">
+        {{person.user.username}}
+      </a>
+      <!-- {{person.user}} -->
+      
+      <br>
+      {% endfor %}
+
+
+      <h2> Cooks</h2>
+      <div class = "container">
+      {% for person in Cooks %}
+      <div class = "col-md-3">
+      <div class = "card card-body">
+      <img src = "{{person.user.customuserprofile.profile_pic.url}}" alt = "Image not present" width = 200, height = 250>
+      <a href="{% url 'shop:cook-info' person.user.customuserprofile.id %}">{{person.user.username}}</a>
+      </div>
+      </div>
+      <!-- {{person.user}} -->
+      {% endfor %}
+      <!-- <select onchange="location = this.value;">
+        <option value="home.html">2</option>
+        <option value="team.html">7</option>
+        <option value="contact.html">All Time</option>
+      </select> -->
+      <h1>Stats of items ordered for past      <select id="selectbox" name="" onchange="javascript:location.href = this.value;">
+        <option value="/manager_view/2">2</option>
+        <option value="/manager_view/7">7</option>
+        <option value="/manager_view/100">All Time</option>
+        
+    
+    </select> days</h1>
+
+      <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item</th>
+            <th scope="col">Frequency</th>
+
+        </tr>
+        </thead>
+        <tbody>
+          {% for key, value in items_in_decreasing_order.items %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ key }}</td>
+            <td>{{ value }}</td>
+ 
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+
+      {% if is_paginated %}
+      <nav class="d-flex justify-content-center wow fadeIn">
+        <ul class="pagination pg-blue">
+
+          {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          {% endif %}
+
+          <li class="page-item active">
+            <a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+
+          {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% endif %}
+
+    </div>
+  </main>
+
+{% endblock content %}
+
+

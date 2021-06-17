@@ -1,0 +1,59 @@
+<html>
+{% extends "base2.html" %}
+{% block content %}
+{% load static %}
+<link href ="{% static 'css/style.css' %}" rel = "stylesheet">
+{%for message in messages%}
+{{message}}
+{%endfor%}
+<form method = 'POST'>
+{% csrf_token %}
+
+{% if review_exists %}
+{% for review in reviews %}
+<p> <b>Current Feedback </b> {{review.feedback}} </p>
+<p> <b>Current Rating </b> {{review.star_rating}} </p>
+<img src = "{{review.item.image.url}}" alt = "Image not present" width = 15%, height = 25%>
+<b>
+<div class = "row">
+	<div class = "container">
+		<div class = "rating-wrapper">
+			<input type = "radio" name ="rating {{forloop.counter}}" id = "star-1 {{forloop.counter}}" value = "5"><label for = "star-1 {{forloop.counter}}"> </label>
+			<input type = "radio" name ="rating {{forloop.counter}}" id = "star-2 {{forloop.counter}}" value = "4"><label for = "star-2 {{forloop.counter}}"> </label>
+			<input type = "radio" name ="rating {{forloop.counter}}" id = "star-3 {{forloop.counter}}" value = "3"><label for = "star-3 {{forloop.counter}}"> </label>
+			<input type = "radio" name ="rating {{forloop.counter}}" id = "star-4 {{forloop.counter}}" value = "2"><label for = "star-4 {{forloop.counter}}"> </label>
+			<input type = "radio" name ="rating {{forloop.counter}}" id = "star-5 {{forloop.counter}}" value = "1"><label for = "star-5 {{forloop.counter}} "> </label>
+
+	</div>
+	</div>
+</div>
+<br>
+{{form.as_p}}
+
+{%endfor%}
+{% else %}
+{% for item in items %}
+<p> <b> Review Item </b> {{item.item.title}} </p>
+<img src = "{{item.item.image.url}}" alt = "Image not present" width = 15%, height = 25%>
+<br>
+<div class = "row">
+	<div class = "container">
+		<div class = "rating-wrapper">
+			<input type = "radio" name ="rating {{forloop.counter}}" id = "star-1 {{forloop.counter}}" value = "5"><label for = "star-1 {{forloop.counter}}"> </label>
+			<input type = "radio" name ="rating {{forloop.counter}}" id = "star-2 {{forloop.counter}}" value = "4"><label for = "star-2 {{forloop.counter}}"> </label>
+			<input type = "radio" name ="rating {{forloop.counter}}" id = "star-3 {{forloop.counter}}" value = "3"><label for = "star-3 {{forloop.counter}}"> </label>
+			<input type = "radio" name ="rating {{forloop.counter}}" id = "star-4 {{forloop.counter}}" value = "2"><label for = "star-4 {{forloop.counter}}"> </label>
+			<input type = "radio" name ="rating {{forloop.counter}}" id = "star-5 {{forloop.counter}}" value = "1"><label for = "star-5 {{forloop.counter}} "> </label>
+
+	</div>
+	</div>
+</div>
+<br>
+
+{{form.as_p}}
+
+{%endfor%}
+{% endif %}
+<input type = "Submit",value = 'Save'/>
+</form>
+{%endblock%}

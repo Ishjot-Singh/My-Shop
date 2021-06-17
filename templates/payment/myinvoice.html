@@ -1,0 +1,365 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Title</title>
+        <style type="text/css">
+            body {
+                font-weight: 200;
+                font-size: 14px;
+            }
+            .header {
+                font-size: 20px;
+                font-weight: 100;
+                text-align: center;
+                color: #007cae;
+            }
+            .title {
+                font-size: 22px;
+                font-weight: 100;
+               /* text-align: right;*/
+               padding: 10px 20px 0px 20px;  
+            }
+            .title span {
+                color: #007cae;
+            }
+            .details {
+                padding: 10px 20px 0px 20px;
+                text-align: left !important;
+                /*margin-left: 40%;*/
+            }
+            .hrItem {
+                border: none;
+                height: 1px;
+                /* Set the hr color */
+                color: #333; /* old IE */
+                background-color: #fff; /* Modern Browsers */
+            }
+
+
+
+
+
+
+            .clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+a {
+  text-decoration: underline;
+}
+
+body {
+  position: relative;
+  margin: 0 auto; 
+  color: #001028;
+  background: #FFFFFF; 
+  font-family: Arial, sans-serif; 
+  font-size: 14px; 
+  font-family: Arial;
+}
+
+header {
+  padding: 10px 0;
+  margin-bottom: 30px;
+}
+
+#logo {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#logo img {
+  width: 90px;
+}
+
+h1 {
+  
+  color: #5D6975;
+  font-size: 2.4em;
+  line-height: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+
+#project {
+  float: left;
+}
+
+#project span {
+  color: #5D6975;
+  text-align: right;
+  width: 52px;
+  margin-right: 10px;
+  display: inline-block;
+  font-size: 14px;
+}
+
+#company {
+  float: right;
+  text-align: right;
+}
+
+#project div,
+#company div {
+  white-space: nowrap;        
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 20px;
+}
+
+
+
+table th,
+table td {
+  text-align: center;
+}
+
+table th {
+  
+  
+  color: #5D6975;
+  border-bottom: 1px solid #C1CED9;
+  white-space: nowrap;        
+  font-weight: normal;
+}
+
+table .service,
+table .desc {
+  text-align: left;
+}
+
+table td {
+ padding-top:5px;
+ padding-bottom:5px;
+  
+}
+
+table tr {
+  border-bottom: 1px solid #C1CED9;
+}
+
+table td.service,
+table td.desc {
+  vertical-align: top;
+}
+
+table td.unit,
+table td.qty,
+table td.total {
+  font-size: 1.2em;
+}
+
+table td.grand {
+  border-top: 1px solid #5D6975;;
+}
+
+#notices .notice {
+  color: #5D6975;
+  font-size: 1.2em;
+}
+
+footer {
+  color: #5D6975;
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid #C1CED9;
+  padding: 8px 0;
+  text-align: center;
+}
+        </style>
+    </head>
+    <body>
+<!-- sub is {{sub}} -->
+<div id="logo" style="display:flex; justify-content:center; align-items:center;">
+  {#<img src="static/firstapp/images/logo.png" class="brand-logo" width=60 height=60>#} <!--not working-->
+  {#<img src="static/logo.png" class="brand-logo" height="200px">#} <!--not working-->
+  <img src="https://previews.123rf.com/images/miracel123/miracel1231801/miracel123180100795/94312687-food-delivery-logo.jpg" class="brand-logo" width=110 height=110>
+  <h1 class="brand-name">MY SHOP</h1>
+  <!-- <div><a href="www.myshop.com">www.myshop.com</a></div> -->
+</div>
+<div class='wrapper'>
+  <div class='header'>
+      <p class='title'>Invoice </p>
+  </div>
+<div>
+  <div id="company" class="clearfix">
+      <!-- <div>My Shop</div> -->
+      <!-- <div><a href="mailto:company@example.com">company@example.com</a></div> -->
+     
+    </div>
+    <!-- user_membership = self.user.membership.membership_type
+    if user_membership == 'None':
+        return self.quantity * self.item.guestprice
+    elif user_membership == 'Silver':
+        return self.quantity * self.item.silverprice
+    elif user_membership == 'Gold':
+        return self.quantity * self.item.goldprice
+    elif user_membership == 'Platinum':
+        return self.quantity * self.item.platinumprice -->
+
+        <!-- <p>Membership : {{user.membership.membership_type}}</p> -->
+        {% if user.membership.membership_type != 'None' %}
+        <div class='details'>
+          <p>Membership : {{user.membership.membership_type}}</p>
+          <!-- <hr class='hrItem' /> -->
+      </div>
+       
+        {% endif %}
+        {% if sub %}
+
+
+              <!-- 'order_id': order_db.id,
+              'transaction_id': order_db.razorpay_payment_id,
+              'user_email': order_db.user.email,
+              # 'date': str(order_db.datetime_of_payment),
+              'name': order_db.user.username,
+              'order': order_db,
+              'amount': order_db.get_total(), -->
+        <div class='details'>
+            <!-- Bill to: {{sub.user.username}}<br/>
+            Email: {{sub.user.email}}<br/>
+            Amount: {{sub.total_bill}} <br/>
+            Date:  {{date}} -->
+ 
+            Bill to: {{name}}<br/>
+            <!-- Email: {{user_email}}<br/> -->
+            Amount: {{amount}} <br/>
+  Subscription Starting Date: {{sub.starting_date}}
+  <br>
+  Subscription Ending Date: {{sub.ending_date}}
+            <!-- following wroks -->
+            <!-- Ordered Date : {{order.ordered_date}} -->
+            <hr class='hrItem' />
+        </div>
+        <div class="table-container" style="overflow-x:auto">
+            <table class="table" style="width:100%">
+                <thead>
+                    <tr>
+                        <th scope="col">PRODUCT</th>
+                        <th scope="col">QUANTITY</th>
+                        <th scope="col">PRICE</th>
+                        <th scope="col">TOTAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in sub.order.items.all %}
+                    <tr>
+                      <td scope="row">{{i.item.title}}</td>
+                      <td>{{i.quantity}}</td>
+                      <!-- <td>{{i.item.guestprice}}</td> -->
+      
+                      {% if user.membership.membership_type == 'None' %}
+                      <td>{{i.item.guestprice}}</td>
+      {% elif user.membership.membership_type == 'Gold' %}
+      <td>{{i.item.goldprice}} </td>
+      {% elif user.membership.membership_type == 'Silver' %}
+      <td>{{i.item.silverprice}}</td>
+      {% elif user.membership.membership_type == 'Platinum' %}
+      <td>{{i.item.platinumprice}}</td>
+      {% endif %}
+      
+      {% if user.membership.membership_type == 'None' %}
+      <td> {% widthratio i.item.guestprice 1 i.quantity %}</td>
+      {% elif user.membership.membership_type == 'Gold' %}
+      <td> {% widthratio i.item.goldprice 1 i.quantity %}</td>
+      {% elif user.membership.membership_type == 'Silver' %}
+      <td> {% widthratio i.item.silverprice 1 i.quantity %}</td>
+      {% elif user.membership.membership_type == 'Platinum' %}
+      <td> {% widthratio i.item.platinumprice 1 i.quantity %}</td>
+      {% endif %}
+                     
+                      <!-- <td>{{i.item.get_total_item_price}} pp {% widthratio 4 1 7 %}</td> -->
+                      
+                  </tr>
+                                      {% endfor %}
+                    <tr>
+                        <td scope="row"></td>
+                        <td>TOTAL: </td>
+                        <td>{{amount}}</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+      
+          </div>
+          <p style="text-align:right; font-size:12px;">*All values are in INR<p></p>
+    </div>
+
+
+
+{% else %}
+<div class='details'>
+    Bill to: {{name}}<br/>
+    <!-- Email: {{user_email}}<br/> -->
+    Amount: {{amount}} <br/>
+    Transaction ID : {{transaction_id}} <br>
+    Ordered Date : {{order.ordered_date}}
+    <hr class='hrItem' />
+</div>
+<div class="table-container" style="overflow-x:auto">
+    <table class="table" style="width:100%">
+        <thead>
+            <tr>
+                <th scope="col">PRODUCT</th>
+                <th scope="col">QUANTITY</th>
+                <th scope="col">PRICE</th>
+                <th scope="col">TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in order.items.all %}
+            <tr>
+                <td scope="row">{{i.item.title}}</td>
+                <td>{{i.quantity}}</td>
+                <!-- <td>{{i.item.guestprice}}</td> -->
+
+                {% if user.membership.membership_type == 'None' %}
+                <td>{{i.item.guestprice}}</td>
+{% elif user.membership.membership_type == 'Gold' %}
+<td>{{i.item.goldprice}} </td>
+{% elif user.membership.membership_type == 'Silver' %}
+<td>{{i.item.silverprice}}</td>
+{% elif user.membership.membership_type == 'Platinum' %}
+<td>{{i.item.platinumprice}}</td>
+{% endif %}
+
+{% if user.membership.membership_type == 'None' %}
+<td> {% widthratio i.item.guestprice 1 i.quantity %}</td>
+{% elif user.membership.membership_type == 'Gold' %}
+<td> {% widthratio i.item.goldprice 1 i.quantity %}</td>
+{% elif user.membership.membership_type == 'Silver' %}
+<td> {% widthratio i.item.silverprice 1 i.quantity %}</td>
+{% elif user.membership.membership_type == 'Platinum' %}
+<td> {% widthratio i.item.platinumprice 1 i.quantity %}</td>
+{% endif %}
+               
+                <!-- <td>{{i.item.get_total_item_price}} pp {% widthratio 4 1 7 %}</td> -->
+                
+            </tr>
+            {% endfor %}
+            <tr>
+                <td scope="row"></td>
+                <td>TOTAL AMOUNT: </td>
+                <td>{{amount}}</td>
+                
+            </tr>
+        </tbody>
+    </table>
+
+  </div>
+  <p style="text-align:right; font-size:12px;">*All values are in INR<p></p>
+</div>
+{% endif %}
+
+     
+    </body>
+</html>

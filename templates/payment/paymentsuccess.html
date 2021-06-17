@@ -1,0 +1,15 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="info">
+<div class="container" style="text-align:center;">
+<h1>Payment Success</h1>
+<br>
+<h3>Congratulations! You have successfully done the payment.</h3>
+<a class="btn btn-primary btn-lg signup-button" href = "/printinvoice/{{id}}">Print Invoice</a>
+<!-- <a class="btn btn-primary btn-lg signup-button" href = "#">Print Invoice</a> -->
+</div>
+</div>
+{% endblock content%}

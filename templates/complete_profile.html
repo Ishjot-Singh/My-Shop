@@ -1,0 +1,13 @@
+{% extends "base2.html" %}
+
+{% block content %}
+<form method = 'POST' enctype = 'multipart/form-data'>
+{% csrf_token %}
+{{form}}
+<input type = 'Submit',value = '/'>
+
+{% for message in messages %}
+	{{message}}
+{% endfor %}
+
+{% endblock content %}

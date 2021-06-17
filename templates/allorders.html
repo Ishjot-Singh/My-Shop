@@ -1,0 +1,219 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+  <main>
+    <div class="container">
+
+    <div class="table-responsive text-nowrap">
+    <h1>Subscriptions</h1>
+    {% if subscriptions == False %}
+    <h5> You have no subscription available </h5>
+    {% else %}
+    {% for s in subscriptions %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Order Status</th>
+            <th scope="col">Order Date</th>
+            <th scope="col">Delivery Date</th>
+            <th scope="col">Total Item Price</th>
+            <th scope="col">Items</th>
+            <th scope="col"> Reviews</th>
+
+        </tr>
+        </thead>
+        <tbody> 
+        {{s.total_bill}}
+        {% for order in s.subscriptions.all %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ order.status }}</td>
+            <td>{{ order.ordered_date }}</td>
+            <td>{{ order.delivery_date }}</td>
+            <td>${{ order.get_total }}</td>
+            <td><a href = "{% url 'shop:skip-sub' order.id s.id %}"> Skip Order </a></td>>
+            <td>            {% for item in order.items.all %}
+                {{item}} ,
+            {% endfor %}</td>
+            <td>
+            {% if order.reviewed %}
+            <a href = "{% url 'shop:review-order' order.id %}"> Edit Review </a>
+            {% else %}
+            <a href = "{% url 'shop:review-order' order.id %}"> Review Order </a>
+            {% endif %}
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endfor %}
+{% endif %}
+  <main>
+    <div class="container">
+
+    <div class="table-responsive text-nowrap">
+    <h2>Order Summary</h2>
+    <br>
+    <h1>ALL ORDERS</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Order Status</th>
+            <th scope="col">Order Date</th>
+            <th scope="col">Delivery Date</th>
+            <th scope="col">Total Item Price</th>
+            <th scope="col">Items</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ order.status }}</td>
+            <td>{{ order.ordered_date }}</td>
+            <td>{{ order.delivery_date }}</td>
+            <td>${{ order.get_total }}</td>
+            <td>            {% for item in order.items.all %}
+                {{item}} ,
+            {% endfor %}</td>
+            <td>
+            {% if order.reviewed %}
+            <a href = "{% url 'shop:review-order' order.id %}"> Edit Review </a>
+            {% else %}
+            <a href = "{% url 'shop:review-order' order.id %}"> Review Order </a>
+            {% endif %}
+            <td>
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+
+
+    <h1>Near Future Orders</h1>
+    {% if nearfutureorders %}
+    
+    <table class="table">
+      <thead>
+      <tr>
+          <th scope="col">#</th>
+          <th scope="col">Order Status</th>
+          <th scope="col">Order Date</th>
+          <th scope="col">Delivery Date</th>
+          <th scope="col">Total Item Price</th>
+          <th scope="col">Items</th>
+    
+      </tr>
+      </thead>
+      <tbody>
+      {% for order in nearfutureorders %}
+      <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ order.status }}</td>
+          <td>{{ order.ordered_date }}</td>
+          <td>{{ order.delivery_date }}</td>
+          <td>${{ order.get_total }}</td>
+          <td>            {% for item in order.items.all %}
+              {{item}} ,
+          {% endfor %}</td>
+    
+      </tr>
+    
+      {% endfor %}
+    
+      </tbody>
+    </table>
+    {% else %}
+     Nothing to display
+    {% endif %}
+
+  <h1>Future Orders</h1>
+  {% if futureorders %}
+  
+  <table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Order Status</th>
+        <th scope="col">Order Date</th>
+        <th scope="col">Delivery Date</th>
+        <th scope="col">Total Item Price</th>
+        <th scope="col">Items</th>
+  
+    </tr>
+    </thead>
+    <tbody>
+    {% for order in futureorders %}
+    <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ order.status }}</td>
+        <td>{{ order.ordered_date }}</td>
+        <td>{{ order.delivery_date }}</td>
+        <td>${{ order.get_total }}</td>
+        <td>            {% for item in order.items.all %}
+            {{item}} ,
+        {% endfor %}</td>
+  
+    </tr>
+  
+    {% endfor %}
+  
+    </tbody>
+  </table>
+  {% else %}
+   Nothing to display
+  {% endif %}
+
+
+<h1>Past Orders</h1>
+{% if pastorders %}
+
+<table class="table">
+  <thead>
+  <tr>
+      <th scope="col">#</th>
+      <th scope="col">Order Status</th>
+      <th scope="col">Order Date</th>
+      <th scope="col">Delivery Date</th>
+      <th scope="col">Total Item Price</th>
+      <th scope="col">Items</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  {% for order in pastorders %}
+  <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ order.status }}</td>
+      <td>{{ order.ordered_date }}</td>
+      <td>{{ order.delivery_date }}</td>
+      <td>${{ order.get_total }}</td>
+      <td>            {% for item in order.items.all %}
+          {{item}} ,
+      {% endfor %}</td>
+
+  </tr>
+
+  {% endfor %}
+
+  </tbody>
+</table>
+{% else %}
+ Nothing to display
+{% endif %}
+
+</div>
+
+    </div>
+  </main>
+
+{% endblock content %}
+
+

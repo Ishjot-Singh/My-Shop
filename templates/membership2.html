@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+{% extends "base2.html" %}
+{% block content %}
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <title>Add Membership</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic' rel='stylesheet'
+        type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="http://alliance-html.themerex.net/assets/skin/default_skin/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="http://alliance-html.themerex.net/assets/allcp/forms/css/forms.css">
+    <link rel="shortcut icon" href="http://alliance-html.themerex.net/assets/img/favicon.ico">
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'newassets/css/style.css'%}">
+<h4> Add a membership </h4>
+    {% if remaining_days > 0 %}
+<p style = "font-size: 16px;">
+        You're current {{existing_membership.membership_type}} membership will expire on {{existing_membership.ending_date.date}}.</br>
+        You can choose to upgrade membership, or renew after membership ends
+    {%endif%}
+</p>
+</head>
+        <div id="content" class="animated fadeIn">
+            <div class="row">
+
+            {% if existing_membership.membership_type == 'None' %}
+                <div class="col-sm-6 col-lg-3">
+                    <div class="bs-component">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <span class="panel-title">Silver Membership 3 Months</span>
+                            </div>
+                            <div class="panel-body">
+                                <p>Add a silver membership for 3 months for the price of </p></br> <h3> &#8377 {{membership.silver_3m}} </h3>
+                                <p></br></p>
+                                <div class="btn btn-default btn-lg mb5"><a href="{% url 'shop:payment_razorpay2' membership.silver_3m 'Silver' %}" style = "color:white;">Proceed</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="bs-component">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <span class="panel-title">Silver Membership 6 Months</span>
+                            </div>
+                            <div class="panel-body">
+                                <p>Add a silver membership for 6 months for the price of </p></br> <h3> &#8377 {{membership.silver_6m}} </h3>
+                                <p></br></p>
+                                <div class="btn btn-default btn-lg mb5"><a href="{% url 'shop:payment_razorpay2' membership.silver_6m 'Silver' %}" style = "color:white;">Proceed</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if existing_membership.membership_type == 'None' or existing_membership.membership_type == 'Silver' %}
+                <div class="col-sm-6 col-lg-3">
+                    <div class="bs-component">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <span class="panel-title">Gold Membership 3 Months</span>
+                            </div>
+                            <div class="panel-body">
+                                <p>Add a gold membership for 3 months for the price of </p></br> <h3> &#8377 {{membership.gold_3m}} </h3>
+                                <p></br></p>
+                                <div class="btn btn-default btn-lg mb5"><a href="{% url 'shop:payment_razorpay2' membership.gold_3m 'Gold' %}" style = "color:white;">Proceed</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="bs-component">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <span class="panel-title">Gold Membership 6 Months</span>
+                            </div>
+                            <div class="panel-body">
+                                <p>Add a gold membership for 6 months for the price of </p></br> <h3> &#8377 {{membership.gold_6m}} </h3>
+                                <p></br></p>
+                                <div class="btn btn-default btn-lg mb5"><a href="{% url 'shop:payment_razorpay2' membership.gold_6m 'Gold' %}" style = "color:white">Proceed</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if existing_membership.membership_type == 'None' or existing_membership.membership_type == 'Silver' or existing_membership.membership_type == 'Gold'%}
+                <div class="col-sm-6 col-lg-3">
+                    <div class="bs-component">
+                        <div class="panel panel-warnings">
+                            <div class="panel-heading">
+                                <span class="panel-title">Platinum Membership 3 months</span>
+                            </div>
+                            <div class="panel-body">
+                                 <p>Add a Platinum membership for 3 months for the price of </p></br> <h3> &#8377 {{membership.platinum_3m}} </h3>
+                                <p></p>
+                                <div class="btn btn-default btn-lg mb5"><a href="{% url 'shop:payment_razorpay2' membership.platinum_3m 'Platinum' %}" style="color:white;">Proceed</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="bs-component">
+                        <div class="panel panel-warnings">
+                            <div class="panel-heading">
+                                <span class="panel-title">Platinum Membership 6 months</span>
+                            </div>
+                            <div class="panel-body">
+                                <p>Add a Platinum membership for 6 months for the price of </p></br> <h3> &#8377 {{membership.platinum_6m}} </h3>
+                                <p></p>
+                                <div class="btn btn-default btn-lg mb5"><a href="{% url 'shop:payment_razorpay2' membership.platinum_6m 'Platinum' %}" style = "color:white;">Proceed</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% if existing_membership.membership_type == 'Platinum'%}
+                <p><strong> No more membership upgrades available</strong><p>
+                <a href = "/"> Return to homepage </a>
+                {% endif %}
+                </div>
+            </div>
+{% endblock content %}

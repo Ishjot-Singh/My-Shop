@@ -1,0 +1,15 @@
+{% extends "base2.html" %}
+
+{% block content %}
+<div class = "form-group">
+<form method = 'POST'>
+{% csrf_token %}
+{{form}}
+<input type = 'Submit',value = '"'>
+</form>
+</div>
+{% for message in messages %}
+	{{message}}
+{% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,143 @@
+/* Required height of parents of the Half Page Carousel for proper displaying carousel itself*/ 
+html,
+body,
+
+
+.view {
+  height: 100%; }
+
+/* Half Page Carousel itself*/
+.carousel {
+  height: 50%; }
+  .carousel .carousel-inner {
+    height: 100%; }
+    .carousel .carousel-inner .carousel-item,
+    .carousel .carousel-inner .active {
+      height: 100%; }
+
+/* Adjustment for mobile devices*/
+@media (max-width: 776px) {
+  .carousel {
+    height: 100%; } }
+
+/* Footer color for sake of consistency with Navbar */
+.page-footer {
+  background-color: #929FBA; }
+
+.appointment-btn {
+  margin-left: 25px;
+  background: #1977cc;
+  color: #fff;
+  border-radius: 50px;
+  padding: 8px 25px;
+  white-space: nowrap;
+  transition: 0.3s;
+  font-size: 25px;
+  display: inline-block;
+}
+
+
+.rating-wrapper
+{
+  direction:rtl;
+}
+
+.rating-wrapper label
+{
+  display:inline-block;
+  width: 30px;
+  position: relative;
+  cursor: pointer;
+}
+
+.rating-wrapper input
+{
+  display:none;
+}
+
+.rating-wrapper label:before
+{
+  content: '\2605';
+  position: absolute;
+  float: right;
+  font-size: 45px;
+  display: inline-block;
+  top:0;
+  left:0;
+  color:black;
+
+}
+
+.rating-wrapper label:after
+{
+  content: '\2605';
+  position: absolute;
+  font-size: 45px;
+  display: inline-block;
+  top:0;
+  left:0;
+  color: yellow;
+  opacity:0;
+}
+
+.rating-wrapper label:hover:after
+{
+  opacity:1;
+}
+
+.rating-wrapper label:hover:after,
+.rating-wrapper label:hover ~ label:after,
+.rating-wrapper input:checked ~ label:after
+{
+  opacity:1;
+}
+
+.rating-wrapper label
+{
+  display:inline-block;
+  width: 30px;
+  position: relative;
+  cursor: pointer;
+}
+
+.rating-wrapper input
+{
+  display:none;
+}
+
+.rating-wrapper label:before
+{
+  content: '\2605';
+  position: absolute;
+  float: right;
+  font-size: 45px;
+  display: inline-block;
+  top:0;
+  left:0;
+  color:black;
+
+}
+
+.rating-wrapper label:after
+{
+  content: '\2605';
+  position: absolute;
+  font-size: 45px;
+  display: inline-block;
+  top:0;
+  left:0;
+  color: yellow;
+  opacity:0;
+}
+
+.rating-wrapper label:hover:after
+{
+  opacity:1;
+}
+
+.rating-wrapper label:hover:after,
+.rating-wrapper label:hover ~ label:after,
+.rating-wrapper input:checked ~ label:after
+{
+  opacity:1;
+}
